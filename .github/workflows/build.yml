@@ -18,13 +18,13 @@ jobs:
 
     steps:
       # --------------------------------------------------
-      # Checkout
+      # Checkout source code
       # --------------------------------------------------
       - name: Checkout Code
         uses: actions/checkout@v4
 
       # --------------------------------------------------
-      # Java 17
+      # Setup JDK 17
       # --------------------------------------------------
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -34,7 +34,7 @@ jobs:
           cache: gradle
 
       # --------------------------------------------------
-      # Gradle
+      # Setup Gradle 9.3.1
       # --------------------------------------------------
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -42,9 +42,7 @@ jobs:
           gradle-version: '9.3.1'
 
       # --------------------------------------------------
-      # Create .env
-      # IMPORTANT:
-      # Do NOT put quotes around GEMINI_API_KEY.
+      # Create .env file from GitHub Secret
       # --------------------------------------------------
       - name: Create .env file
         env:
@@ -80,13 +78,23 @@ jobs:
           fi
 
       # --------------------------------------------------
-      # Make Gradle executable
+      # Generate Gradle Wrapper
+      # Project currently does not contain gradlew
+      # --------------------------------------------------
+      - name: Generate Gradle Wrapper
+        run: |
+          gradle wrapper \
+            --gradle-version 9.3.1 \
+            --distribution-type bin
+
+      # --------------------------------------------------
+      # Grant Execute Permission
       # --------------------------------------------------
       - name: Grant Execute Permission
         run: chmod +x gradlew
 
       # --------------------------------------------------
-      # Verify Gradle
+      # Check Gradle Wrapper
       # --------------------------------------------------
       - name: Check Gradle
         run: ./gradlew --version
@@ -95,14 +103,12 @@ jobs:
       # Clean project
       # --------------------------------------------------
       - name: Clean
-        run: ./gradlew clean --stacktrace
+        run: ./gradlew clean --stacktrace --no-daemon
 
       # --------------------------------------------------
       # Build Debug APK
       # --------------------------------------------------
       - name: Build Debug APK
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           ./gradlew assembleDebug \
             --stacktrace \
@@ -110,7 +116,7 @@ jobs:
             --no-daemon
 
       # --------------------------------------------------
-      # Check APK
+      # Verify APK exists
       # --------------------------------------------------
       - name: Verify APK
         run: |
