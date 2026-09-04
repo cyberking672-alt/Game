@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sri Lankan Secret Recipes | 2026 Culinary Trend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient 2026 Trend Bioluminescent Background Glows -->
+  <div class="glow-orb glow-teal"></div>
+  <div class="glow-orb glow-saffron"></div>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand-row">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a10 10 0 0 0-7.54 16.57A7.95 7.95 0 0 0 12 22a7.95 7.95 0 0 0 7.54-3.43A10 10 0 0 0 12 2z"/>
+            <path d="M12 6v6l4 2"/>
+            <path d="M8.5 8.5c1.5-1 3.5-1 5 0"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="trend-badge">2026 Culinary Trend System</span>
+          <h1 class="brand-title">Rahas Kramaya</h1>
+          <p class="brand-subtitle">Sri Lankan Secret Recipes & Spice Alchemy</p>
+        </div>
+      </div>
+      <div class="header-stats">
+        <div class="stat-pill"><span class="stat-num" id="total-recipes-count">8</span> Recipes</div>
+        <div class="stat-pill saffron-pill"><span class="stat-num" id="favorites-count">0</span> Saved</div>
+      </div>
+    </header>
+
+    <!-- Search Bar & Controls -->
+    <section class="search-section">
+      <div class="search-bar-wrapper">
+        <span class="search-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+        <input 
+          type="text" 
+          id="search-input" 
+          class="search-input" 
+          placeholder="Search secret spices, ingredients (goraka, jaggery, coconut)..." 
+          autocomplete="off"
+        >
+        <button id="clear-search-btn" class="clear-search-btn" title="Clear search" style="display: none;">&times;</button>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <nav class="category-scroll" id="category-filters">
+        <button class="cat-pill active" data-cat="all">All Secrets</button>
+        <button class="cat-pill" data-cat="Curries">🌶️ Secret Curries</button>
+        <button class="cat-pill" data-cat="Street Food">🔥 Street Food</button>
+        <button class="cat-pill" data-cat="Heritage">🏺 Heritage</button>
+        <button class="cat-pill" data-cat="Sambols">🥥 Sambols & Breads</button>
+        <button class="cat-pill" data-cat="Desserts">🍯 Royal Sweets</button>
+      </nav>
+
+      <!-- Secondary Filters Bar -->
+      <div class="secondary-filters">
+        <div class="filter-group">
+          <label for="spice-filter">Heat Level:</label>
+          <select id="spice-filter" class="filter-select">
+            <option value="all">All Spiciness</option>
+            <option value="1">Mild (1 Chili)</option>
+            <option value="2">Medium (2 Chilies)</option>
+            <option value="3">Hot (3 Chilies)</option>
+            <option value="4">Jaffna Fiery (4 Chilies)</option>
+          </select>
+        </div>
+        <button id="toggle-favorites-filter" class="fav-toggle-btn">
+          <span class="heart-icon">♥</span> Show Favorites Only
+        </button>
+      </div>
+    </section>
+
+    <!-- Recipe Grid -->
+    <main>
+      <div class="results-header">
+        <span id="results-count-text">Showing all recipes</span>
+      </div>
+
+      <div class="recipe-grid" id="recipe-grid">
+        <!-- Recipe Cards injected by app.js -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="empty-state" style="display: none;">
+        <div class="empty-icon">🍃</div>
+        <h3>No secret recipes found</h3>
+        <p>Try searching for different spices or clear active filters</p>
+        <button id="reset-filters-btn" class="action-btn">Reset All Filters</button>
+      </div>
+    </main>
+
+    <!-- Recipe Detail Modal -->
+    <div class="modal-overlay" id="recipe-modal" style="display: none;">
+      <div class="modal-card">
+        <button class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+        <div id="modal-content" class="modal-body">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Sri Lankan Secret Recipes • 2026 Color Trend System (Transformative Teal & Saffron Amber)</p>
+      <div class="footer-tags">
+        <span>#RahasKramaya</span>
+        <span>#CeylonSpices</span>
+        <span>#2026CulinaryDesign</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
